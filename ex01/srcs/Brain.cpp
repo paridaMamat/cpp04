@@ -1,9 +1,9 @@
 #include"../includes/Brain.hpp"
-#include"../includes/Animal.hpp"
 
 Brain::Brain(){
     std::cout << "\033[1;31mBrain\033[0m🧠 Default constructor called. " << std::endl;
-    *_ideas = "Empty Idea";
+     for (int i = 0; i < 100; i++)
+	    _ideas[i] = "Empty Idea";
 }
 
 Brain::Brain(Brain const &obj){
@@ -18,7 +18,7 @@ Brain::~Brain(){
 Brain &Brain::operator=(Brain const &obj){
     std::cout << "\033[1;31mBrain\033[0m🧠 Copy assignment operator called" << std::endl;
     for (int i = 0; i < 100; i++)
-		_ideas[i] = obj._ideas[i];
+	    _ideas[i] = obj._ideas[i];
 	return *this;
 }
 

@@ -1,6 +1,7 @@
 #include "../includes/Dog.hpp"
 
-Dog::Dog():Animal("Dog"), _brain(new Brain){
+Dog::Dog(): _brain(new Brain){
+    _type = "Dog";
     std::cout << "\033[1;38;5;202mDog\033[0m🐶 Default constructor called. " << _type << " was created" << std::endl;
 }
 
@@ -26,14 +27,14 @@ void    Dog::makeSound(void) const{
     std::cout << "WOUF WOUF !" <<std::endl;
 }
 
-void    Brain::setIdea(std::string const &idea, int const index){
+void    Dog::setIdea(std::string const &idea, int const index){
     if (index >= 0 && index < 100)
-        _ideas[index] = idea;
+        _brain->setIdea(idea, index);
 }
 
-std::string    Brain::getIdea(int const index) const{
+std::string    Dog::getIdea(int const index) const{
     if (index >= 0 && index < 100)
-        return (_ideas[index]);
+        return _brain->getIdea(index);
     return "NOTHING" ;
 }
 
