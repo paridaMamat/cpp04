@@ -1,6 +1,6 @@
 #..............................TARGET..................................#
 
-NAME = ClapTrap
+NAME = AMateria
 
 #..............................COMMANDS................................#
 
@@ -24,7 +24,9 @@ OBJ_DIR    = obj/
 
 #................................SOURCES.................................#
 
-SRCS = main.cpp ClapTrap.cpp
+SRCS = main.cpp AMateria.cpp Character.cpp ICharacter.cpp IMateriaSource.cpp \
+	   MateriaCure.cpp MateriaFire.cpp MateriaIce.cpp MateriaLightning.cpp \
+	   MateriaSource.cpp 
 ALL_SRCS = $(addprefix $(SRC_DIR), $(SRCS))
 OBJS_NAMES	= $(ALL_SRCS:.cpp=.o)
 OBJ = $(addprefix $(OBJ_DIR), $(OBJS_NAMES))
