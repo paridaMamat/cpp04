@@ -1,6 +1,5 @@
 #include "../includes/MateriaSource.hpp"
 
-/*=============================== Constructors ===============================*/
 
 MateriaSource::MateriaSource() : IMateriaSource(), _countMaterias(0){
 	std::cout << "[MateriaSource] Default constructor called." << std::endl;
@@ -21,7 +20,6 @@ MateriaSource::~MateriaSource(){
 		delete _inventory[i];
 }
 
-/*================================ Overloads =================================*/
 
 MateriaSource& MateriaSource::operator=(const MateriaSource &src)
 {
@@ -29,19 +27,18 @@ MateriaSource& MateriaSource::operator=(const MateriaSource &src)
 	{
 		delete _inventory[i];
 		if (src._inventory[i]->getType() == "ice")
-			_inventory[i] = new MateriaIce;
+			_inventory[i] = new Ice;
 		else if (src._inventory[i]->getType() == "cure")
-			_inventory[i] = new MateriaCure;
+			_inventory[i] = new Cure;
 		else if (src._inventory[i]->getType() == "fire")
-			_inventory[i] = new MateriaFire;
+			_inventory[i] = new Fire;
 		else if (src._inventory[i]->getType() == "lightning")
-			_inventory[i] = new MateriaLightning;
+			_inventory[i] = new Lightning;
 	}
 
 	return (*this);
 }
 
-/*================================= Methods ==================================*/
 
 void	MateriaSource::learnMateria(AMateria *obj)
 {
@@ -61,13 +58,13 @@ AMateria*	MateriaSource::createMateria(std::string const &type)
 		if (type == _inventory[i]->getType())
 		{
 			if (_inventory[i]->getType() == "ice")
-				return (new MateriaIce);
+				return (new Ice);
 			else if (_inventory[i]->getType() == "cure")
-				return (new MateriaCure);
+				return (new Cure);
 			else if (_inventory[i]->getType() == "fire")
-				return (new MateriaFire);
+				return (new Fire);
 			else if (_inventory[i]->getType() == "lightning")
-				return (new MateriaLightning);
+				return (new Lightning);
 		}
 	}
 	return (0);

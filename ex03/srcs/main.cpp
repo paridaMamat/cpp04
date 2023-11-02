@@ -1,8 +1,8 @@
 #include "../includes/AMateria.hpp"
-#include "../includes/MateriaIce.hpp"
-#include "../includes/MateriaCure.hpp"
-#include "../includes/MateriaFire.hpp"
-#include "../includes/MateriaLightning.hpp"
+#include "../includes/Ice.hpp"
+#include "../includes/Cure.hpp"
+#include "../includes/Fire.hpp"
+#include "../includes/Lightning.hpp"
 #include "../includes/MateriaSource.hpp"
 #include "../includes/Character.hpp"
 
@@ -31,19 +31,19 @@ int main( void )
 	IMateriaSource*	src = new MateriaSource();
 	std::cout << std::endl;
 
-	src->learnMateria(new MateriaIce());
+	src->learnMateria(new Ice());
 	std::cout << std::endl;
 
-	src->learnMateria(new MateriaCure());
+	src->learnMateria(new Cure());
 	std::cout << std::endl;
 
-	src->learnMateria(new MateriaFire());
+	src->learnMateria(new Fire());
 	std::cout << std::endl;
 
-	src->learnMateria(new MateriaLightning());
+	src->learnMateria(new Lightning());
 	std::cout << std::endl;
 
-	src->learnMateria(new MateriaIce());
+	src->learnMateria(new Ice());
 
 	std::cout << std::endl;
 	std::cout << "===================================" << std::endl;

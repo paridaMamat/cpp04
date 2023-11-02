@@ -20,9 +20,9 @@ Character::Character(const std::string &name) : _name(name), _countMaterias(0), 
 	std::cout << getName() << " was created." << std::endl;
 }
 
-Character::Character(const Character &src){
+Character::Character(const Character &obj){
 	std::cout << "[Character] Copy constructor called." << std::endl;
-	*this = src;
+	*this = obj;
 	std::cout << getName() << " was copied." << std::endl;
 }
 
@@ -36,34 +36,34 @@ Character::~Character(){
 
 /*================================ Overloads =================================*/
 
-Character& Character::operator=(const Character &src)
+Character& Character::operator=(const Character &obj)
 {
-	_name = src._name;
-	_countMaterias = src._countMaterias;
+	_name = obj._name;
+	_countMaterias = obj._countMaterias;
 
 	for (int i = 0; i < _countMaterias; i++)
 	{
 		delete _inventory[i];
-		if (src._inventory[i]->getType() == "ice")
-			_inventory[i] = new MateriaIce;
-		else if (src._inventory[i]->getType() == "cure")
-			_inventory[i] = new MateriaCure;
-		else if (src._inventory[i]->getType() == "fire")
-			_inventory[i] = new MateriaFire;
-		else if (src._inventory[i]->getType() == "lightning")
-			_inventory[i] = new MateriaLightning;
+		if (obj._inventory[i]->getType() == "ice")
+			_inventory[i] = new Ice;
+		else if (obj._inventory[i]->getType() == "cure")
+			_inventory[i] = new Cure;
+		else if (obj._inventory[i]->getType() == "fire")
+			_inventory[i] = new Fire;
+		else if (obj._inventory[i]->getType() == "lightning")
+			_inventory[i] = new Lightning;
 	}
 	if (_throwed)
 	{
 		delete _throwed;
 		if (_throwed->getType() == "ice")
-			_throwed = new MateriaIce;
+			_throwed = new Ice;
 		else if (_throwed->getType() == "cure")
-			_throwed = new MateriaCure;
+			_throwed = new Cure;
 		else if (_throwed->getType() == "fire")
-			_throwed = new MateriaFire;
+			_throwed = new Fire;
 		else if (_throwed->getType() == "lightning")
-			_throwed = new MateriaLightning;
+			_throwed = new Lightning;
 	}
 	return (*this);
 }
@@ -100,13 +100,13 @@ void	Character::unequip(int idx)
 	}
 }
 
-void	Character::use(int idx, ICharacter& target)
+void	Character::use(int idx, ICharacter &target)
 {
 	if (idx >= 0 && idx <= 3 && _inventory[idx])
 		_inventory[idx]->use(target);
 }
 
-/*================================ Accessors =================================*/
+
 
 std::string const&	Character::getName( void ) const{
 	return (_name);

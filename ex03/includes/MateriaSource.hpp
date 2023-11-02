@@ -4,10 +4,10 @@
 #include <iostream>
 #include "AMateria.hpp"
 #include "IMateriaSource.hpp"
-#include "MateriaIce.hpp"
-#include "MateriaCure.hpp"
-#include "MateriaFire.hpp"
-#include "MateriaLightning.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
+#include "Fire.hpp"
+#include "Lightning.hpp"
 
 class MateriaSource :public IMateriaSource
 {
@@ -23,7 +23,7 @@ class MateriaSource :public IMateriaSource
     MateriaSource(MateriaSource const &obj);
     MateriaSource   &operator=(MateriaSource const &obj);
 
-    void    learnMateria(AMateria *obj);
+    void         learnMateria(AMateria *obj);
     AMateria*    createMateria(std::string const &type);
 };
 #endif

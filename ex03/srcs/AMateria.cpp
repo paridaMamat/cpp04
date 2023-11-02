@@ -1,12 +1,12 @@
 #include "../includes/AMateria.hpp"
 
-/*=============================== Constructors ===============================*/
+
 
 AMateria::AMateria() : _type("unamed"){
 	std::cout << "[AMateria] Default constructor called." << std::endl;
 }
 
-AMateria::AMateria(std::string const type) : _type(type){
+AMateria::AMateria(std::string const &type) : _type(type){
 	std::cout << "[AMateria] overload constructor called." << std::endl;
 }
 
@@ -20,7 +20,7 @@ AMateria::~AMateria(){
 	std::cout << getType() << " was destroyed." << std::endl;
 }
 
-/*================================ Overloads =================================*/
+
 
 AMateria& AMateria::operator=(const AMateria &obj)
 {
@@ -28,14 +28,13 @@ AMateria& AMateria::operator=(const AMateria &obj)
 	return (*this);
 }
 
-/*================================= Methods ==================================*/
+
 
 void	AMateria::use(ICharacter &target)
 {
 	(void)target;
 }
 
-/*================================ Accessors =================================*/
 
 std::string const	&AMateria::getType( void ) const{
 	return (_type);

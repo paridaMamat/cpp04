@@ -4,10 +4,10 @@
 #include <iostream>
 #include "ICharacter.hpp"
 #include "AMateria.hpp"
-#include "MateriaIce.hpp"
-#include "MateriaCure.hpp"
-#include "MateriaFire.hpp"
-#include "MateriaLightning.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
+#include "Fire.hpp"
+#include "Lightning.hpp"
 
 class Character : public ICharacter
 {
@@ -29,7 +29,7 @@ class Character : public ICharacter
 	virtual std::string const&  getName(void) const;
     virtual void                equip(AMateria* m);
     virtual void                unequip(int idx);
-    virtual void                use(int idx, ICharacter& terget);
+    virtual void                use(int idx, ICharacter &target);
 
 };
 #endif
