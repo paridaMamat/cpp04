@@ -108,7 +108,7 @@ int main()
 	me->unequip(0);
 	me->unequip(1);
 	std::cout << std::endl;
-	
+
 	delete tmp_ice;
 	tmp_ice = NULL;
 	delete tmp_cure;

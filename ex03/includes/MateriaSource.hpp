@@ -13,7 +13,7 @@ class MateriaSource :public IMateriaSource
     private :
 
     AMateria *_inventory[4];
-    int      _countMaterias;
+    // int      _countMaterias;
 
     public :
 
@@ -24,5 +24,6 @@ class MateriaSource :public IMateriaSource
 
     void         learnMateria(AMateria *obj);
     AMateria*    createMateria(std::string const &type);
+    AMateria* getInventory(int idx) const;
 };
 #endif

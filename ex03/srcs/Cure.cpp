@@ -7,7 +7,7 @@ Cure::Cure() : AMateria("cure"){
 	std::cout << getType() << " was created." << std::endl;
 }
 
-Cure::Cure(Cure const &obj) : AMateria(obj){
+Cure::Cure(Cure const &obj){
 	std::cout << "[Cure] Copy constructor called." << std::endl;
 	*this = obj;
 	std::cout << getType() << " was copied." << std::endl;
@@ -29,9 +29,7 @@ Cure& Cure::operator=(Cure const &obj)
 
 AMateria*	Cure::clone( void ) const
 {
-	AMateria*	newMateria = new Cure;
-
-	return (newMateria);
+	return (new Cure());
 }
 
 void	Cure::use(ICharacter& target)

@@ -2,35 +2,46 @@
 
 /*=============================== Constructors ===============================*/
 
-Character::Character() : _name("unamed"), _countMaterias(0), _throwed(NULL){
+Character::Character() : _name("unamed"){
 	std::cout << "[Character] Default constructor called." << std::endl;
-	_inventory[0] = NULL;
-	_inventory[1] = NULL;
-	_inventory[2] = NULL;
-	_inventory[3] = NULL;
+	for (size_t i = 0; i < 4; i++)
+	{
+		_inventory[i] = NULL;
+	}
 	std::cout << getName() << " was created." << std::endl;
 }
 
-Character::Character(const std::string name) : _name(name), _countMaterias(0), _throwed(NULL){
+Character::Character(const std::string name) : _name(name){
 	std::cout << "[Character] overload constructor called." << std::endl;
-	_inventory[0] = NULL;
-	_inventory[1] = NULL;
-	_inventory[2] = NULL;
-	_inventory[3] = NULL;
+	for (size_t i = 0; i < 4; i++)
+	{
+		_inventory[i] = NULL;
+	}
 	std::cout << getName() << " was created." << std::endl;
 }
 
 Character::Character(const Character &obj){
 	std::cout << "[Character] Copy constructor called." << std::endl;
-	*this = obj;
+	for (size_t i = 0; i < 4; i++)
+	{
+		delete _inventory[i];
+		_inventory[i] = NULL;
+		AMateria* tmp = obj.getInventory(i); 
+		if (tmp != NULL)
+		{
+			_inventory[i] = tmp->clone();
+		}
+	}
+	_name = obj.getName();
 	std::cout << getName() << " was copied." << std::endl;
 }
 
 Character::~Character(){
 	std::cout << "[Character] Default destructor called." << std::endl;
-	for (int i = 0; i < _countMaterias; i++)
+	for (size_t i = 0; i < 4; i++)
+	{
 		delete _inventory[i];
-	delete _throwed;
+	}
 	std::cout << getName() << " was destroyed." << std::endl;
 }
 
@@ -39,23 +50,15 @@ Character::~Character(){
 Character& Character::operator=(const Character &obj)
 {
 	_name = obj._name;
-	_countMaterias = obj._countMaterias;
-
-	for (int i = 0; i < _countMaterias; i++)
+	for (size_t i = 0; i < 4; i++)
 	{
 		delete _inventory[i];
-		if (obj._inventory[i]->getType() == "ice")
-			_inventory[i] = new Ice;
-		else if (obj._inventory[i]->getType() == "cure")
-			_inventory[i] = new Cure;
-	}
-	if (_throwed)
-	{
-		delete _throwed;
-		if (_throwed->getType() == "ice")
-			_throwed = new Ice;
-		else if (_throwed->getType() == "cure")
-			_throwed = new Cure;
+		_inventory[i] = NULL;
+		AMateria* tmp = obj.getInventory(i); 
+		if (tmp != NULL)
+		{
+			_inventory[i] = tmp->clone();
+		}
 	}
 	return (*this);
 }
@@ -64,42 +67,40 @@ Character& Character::operator=(const Character &obj)
 
 void	Character::equip(AMateria* m)
 {
-	if (_countMaterias < 4)
+	for (size_t i = 0; i < 4; i++)
 	{
-		_inventory[_countMaterias] = m;
-		_countMaterias++;
-	}
-	else
-		delete	m;
-}
-
-void	Character::unequip(int idx)
-{
-	if (idx >= 0 && idx < _countMaterias && _inventory[idx])
-	{
-		_countMaterias--;
-
-		if (_throwed)
-			delete _throwed;
-		_throwed = _inventory[idx];
-	
-		for (int i = idx; i < 3; i++)
+		if (_inventory[i] == NULL && m != NULL)
 		{
-			_inventory[i] = _inventory[i + 1];
-			if (i == 3)
-				_inventory[i] = NULL;
+			_inventory[i] = m;
+			return ;
 		}
 	}
 }
 
-void	Character::use(int idx, ICharacter &target)
+void	Character::unequip(int idx)
 {
-	if (idx >= 0 && idx <= 3 && _inventory[idx])
-		_inventory[idx]->use(target);
+	if (idx >= 0 && idx < 4 && _inventory[idx] != NULL)
+		_inventory[idx] = NULL;
 }
 
+void	Character::use(int idx, ICharacter &target)
+{
+	if (idx >= 0 && idx < 4 && _inventory[idx] != NULL)
+	{
+		_inventory[idx]->use(target);
+	}
+}
 
+AMateria* Character::getInventory(int idx) const
+{
+	if (idx >= 0 && idx < 4 && _inventory[idx] != NULL)
+	{
+		return (_inventory[idx]);
+	}
+	else
+		return NULL;
+}
 
 std::string const&	Character::getName( void ) const{
-	return (_name);
+	return _name;
 }

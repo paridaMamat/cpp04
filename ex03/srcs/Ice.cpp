@@ -7,7 +7,7 @@ Ice::Ice() : AMateria("ice"){
 	std::cout << getType() << " was created." << std::endl;
 }
 
-Ice::Ice(Ice const &obj) : AMateria(obj){
+Ice::Ice(Ice const &obj) {
 	std::cout << "[Ice] Copy constructor called." << std::endl;
 	*this = obj;
 	std::cout << getType() << " was copied." << std::endl;
@@ -17,21 +17,15 @@ Ice::~Ice(){
 	std::cout << "[Ice] Default destructor called." << std::endl;
 }
 
-
-
 Ice &Ice::operator=(Ice const &obj)
 {
 	_type = obj._type;
 	return (*this);
 }
 
-
-
 AMateria*	Ice::clone( void ) const
 {
-	AMateria*	newMateria = new Ice;
-
-	return (newMateria);
+	return (new Ice);
 }
 
 void	Ice::use(ICharacter& target)
