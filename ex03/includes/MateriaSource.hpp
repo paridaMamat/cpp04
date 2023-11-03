@@ -6,8 +6,7 @@
 #include "IMateriaSource.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"
-#include "Fire.hpp"
-#include "Lightning.hpp"
+
 
 class MateriaSource :public IMateriaSource
 {

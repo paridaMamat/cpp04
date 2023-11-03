@@ -7,12 +7,10 @@
 
 class Ice : public AMateria
 {
-    private :
-    Ice(Ice const &obj);
-    Ice  &operator=(Ice const &obj);
-
     public :
     Ice();
+    Ice(Ice const &obj);
+    Ice  &operator=(Ice const &obj);
     ~Ice();
 
     AMateria*   clone(void) const;

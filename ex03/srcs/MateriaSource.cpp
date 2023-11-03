@@ -30,10 +30,6 @@ MateriaSource& MateriaSource::operator=(const MateriaSource &src)
 			_inventory[i] = new Ice;
 		else if (src._inventory[i]->getType() == "cure")
 			_inventory[i] = new Cure;
-		else if (src._inventory[i]->getType() == "fire")
-			_inventory[i] = new Fire;
-		else if (src._inventory[i]->getType() == "lightning")
-			_inventory[i] = new Lightning;
 	}
 
 	return (*this);
@@ -61,10 +57,6 @@ AMateria*	MateriaSource::createMateria(std::string const &type)
 				return (new Ice);
 			else if (_inventory[i]->getType() == "cure")
 				return (new Cure);
-			else if (_inventory[i]->getType() == "fire")
-				return (new Fire);
-			else if (_inventory[i]->getType() == "lightning")
-				return (new Lightning);
 		}
 	}
 	return (0);

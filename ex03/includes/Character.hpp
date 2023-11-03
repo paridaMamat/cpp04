@@ -6,8 +6,6 @@
 #include "AMateria.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"
-#include "Fire.hpp"
-#include "Lightning.hpp"
 
 class Character : public ICharacter
 {
@@ -17,11 +15,11 @@ class Character : public ICharacter
     AMateria    *_inventory[4];
     int         _countMaterias;
     AMateria    *_throwed;
-    Character();
+    
 
     public :
-
-    Character(const std::string &name);
+    Character();
+    Character(const std::string name);
     Character(Character const &obj);
     ~Character();
     Character &operator=(Character const &obj);

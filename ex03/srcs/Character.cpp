@@ -11,8 +11,8 @@ Character::Character() : _name("unamed"), _countMaterias(0), _throwed(NULL){
 	std::cout << getName() << " was created." << std::endl;
 }
 
-Character::Character(const std::string &name) : _name(name), _countMaterias(0), _throwed(NULL){
-	std::cout << "[Character] Parameters constructor called." << std::endl;
+Character::Character(const std::string name) : _name(name), _countMaterias(0), _throwed(NULL){
+	std::cout << "[Character] overload constructor called." << std::endl;
 	_inventory[0] = NULL;
 	_inventory[1] = NULL;
 	_inventory[2] = NULL;
@@ -48,10 +48,6 @@ Character& Character::operator=(const Character &obj)
 			_inventory[i] = new Ice;
 		else if (obj._inventory[i]->getType() == "cure")
 			_inventory[i] = new Cure;
-		else if (obj._inventory[i]->getType() == "fire")
-			_inventory[i] = new Fire;
-		else if (obj._inventory[i]->getType() == "lightning")
-			_inventory[i] = new Lightning;
 	}
 	if (_throwed)
 	{
@@ -60,10 +56,6 @@ Character& Character::operator=(const Character &obj)
 			_throwed = new Ice;
 		else if (_throwed->getType() == "cure")
 			_throwed = new Cure;
-		else if (_throwed->getType() == "fire")
-			_throwed = new Fire;
-		else if (_throwed->getType() == "lightning")
-			_throwed = new Lightning;
 	}
 	return (*this);
 }

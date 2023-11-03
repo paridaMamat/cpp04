@@ -11,14 +11,14 @@ class AMateria
     private :
     protected :
 
-    AMateria(std::string const &type);
-    AMateria    &operator=(AMateria const &obj) ;
     std::string _type;
 
     public :
 
     AMateria();
     AMateria(AMateria const &obj);
+    AMateria(std::string const type);
+    AMateria    &operator=(AMateria const &obj) ;
     virtual ~AMateria();
 
     std::string  const   &getType(void) const;

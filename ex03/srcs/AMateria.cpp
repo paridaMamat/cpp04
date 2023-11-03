@@ -6,7 +6,7 @@ AMateria::AMateria() : _type("unamed"){
 	std::cout << "[AMateria] Default constructor called." << std::endl;
 }
 
-AMateria::AMateria(std::string const &type) : _type(type){
+AMateria::AMateria(std::string const type) : _type(type){
 	std::cout << "[AMateria] overload constructor called." << std::endl;
 }
 

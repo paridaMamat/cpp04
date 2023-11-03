@@ -1,18 +1,16 @@
 #include "../includes/AMateria.hpp"
 #include "../includes/Ice.hpp"
 #include "../includes/Cure.hpp"
-#include "../includes/Fire.hpp"
-#include "../includes/Lightning.hpp"
 #include "../includes/MateriaSource.hpp"
 #include "../includes/Character.hpp"
 
 // int main()
 // {
 // 	IMateriaSource* src = new MateriaSource();
-// 	src->learnMateria(new MateriaIce());
-// 	src->learnMateria(new MateriaCure());
+// 	src->learnMateria(new Ice());
+// 	src->learnMateria(new Cure());
 // 	ICharacter* me = new Character("me");
-// 	A_Materia* tmp;
+// 	AMateria* tmp;
 // 	tmp = src->createMateria("ice");
 // 	me->equip(tmp);
 // 	tmp = src->createMateria("cure");
@@ -26,71 +24,97 @@
 // 	return 0;
 // }
 
-int main( void )
+/* int main( void )
 {
-	IMateriaSource*	src = new MateriaSource();
+	IMateriaSource*	obj = new MateriaSource();
 	std::cout << std::endl;
 
-	src->learnMateria(new Ice());
+	obj->learnMateria(new Ice());
 	std::cout << std::endl;
 
-	src->learnMateria(new Cure());
+	obj->learnMateria(new Cure());
 	std::cout << std::endl;
 
-	src->learnMateria(new Fire());
-	std::cout << std::endl;
-
-	src->learnMateria(new Lightning());
-	std::cout << std::endl;
-
-	src->learnMateria(new Ice());
+	obj->learnMateria(new Ice());
 
 	std::cout << std::endl;
 	std::cout << "===================================" << std::endl;
 	std::cout << std::endl;
 
-	ICharacter*	me = new Character("me");
+	ICharacter*	AAAA = new Character("AAAA");
 	std::cout << std::endl;
 
 	AMateria* tmp;
-	tmp = src->createMateria("ice");
-	me->equip(tmp);
+	tmp = obj->createMateria("ice");
+	AAAA->equip(tmp);
 	std::cout << std::endl;
 
-	tmp = src->createMateria("cure");
-	me->equip(tmp);
+	tmp = obj->createMateria("cure");
+	AAAA->equip(tmp);
 	std::cout << std::endl;
 
-	me->equip(src->createMateria("fire"));
-	std::cout << std::endl;
-
-	me->equip(src->createMateria("lightning"));
-	std::cout << std::endl;
-
-	me->equip(src->createMateria("ice"));
+	AAAA->equip(obj->createMateria("ice"));
+	
 
 	std::cout << std::endl;
 	std::cout << "===================================" << std::endl;
 	std::cout << std::endl;
 
-	ICharacter*	zoubir = new Character("zoubir");
+	ICharacter*	BBBB = new Character("BBBB");
 	std::cout << std::endl;
 
-	me->use(0, *zoubir);
-	me->use(1, *zoubir);
-	me->use(2, *zoubir);
-	me->use(3, *zoubir);
-	me->use(4, *zoubir);
+	AAAA->use(0, *BBBB);
+	AAAA->use(1, *BBBB);
+	AAAA->use(2, *BBBB);
+	AAAA->use(3, *BBBB);
+	AAAA->use(4, *BBBB);
 
 	std::cout << std::endl;
 	std::cout << "===================================" << std::endl;
 	std::cout << std::endl;
 
-	delete zoubir;
+	delete BBBB;
 	std::cout << std::endl;
 
+	delete AAAA;
+	std::cout << std::endl;
+
+	delete obj;
+} */
+
+int main()
+{
+	IMateriaSource* src = new MateriaSource();
+	ICharacter* me = new Character("me");
+	ICharacter* bob = new Character("bob");
+	AMateria* tmp_ice = NULL;
+	AMateria* tmp_cure = NULL;
+	std::cout << std::endl;
+
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	std::cout << std::endl;
+
+	tmp_ice = src->createMateria("ice");
+	me->equip(tmp_ice);
+	tmp_cure = src->createMateria("cure");
+	me->equip(tmp_cure);
+	std::cout << std::endl;
+	
+	me->use(0, *bob);
+	me->use(1, *bob);
+	std::cout << std::endl;
+
+	me->unequip(0);
+	me->unequip(1);
+	std::cout << std::endl;
+	
+	delete tmp_ice;
+	tmp_ice = NULL;
+	delete tmp_cure;
+	tmp_cure = NULL;
+	delete bob;
 	delete me;
-	std::cout << std::endl;
-
 	delete src;
+	return 0;
 }
