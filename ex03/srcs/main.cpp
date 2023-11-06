@@ -109,6 +109,9 @@ int main()
 	me->unequip(1);
 	std::cout << std::endl;
 
+	me->use(0, *bob);
+	me->use(1, *bob);
+
 	delete tmp_ice;
 	tmp_ice = NULL;
 	delete tmp_cure;

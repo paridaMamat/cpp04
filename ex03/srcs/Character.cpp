@@ -67,20 +67,31 @@ Character& Character::operator=(const Character &obj)
 
 void	Character::equip(AMateria* m)
 {
-	for (size_t i = 0; i < 4; i++)
+	int i = 0;
+
+	if (!m)
 	{
-		if (_inventory[i] == NULL && m != NULL)
-		{
-			_inventory[i] = m;
-			return ;
-		}
+		std::cout << _name << " tried to equip nothing and it did nothing\n";
+		return ;
 	}
+	while ((_inventory)[i] != 0 && i < 4)
+		i++;
+	if (i >= 4)
+	{
+		std::cout << _name << " can't equip more than 4 Materia";
+		return ;
+	}
+	(_inventory)[i] = m;
 }
 
 void	Character::unequip(int idx)
 {
 	if (idx >= 0 && idx < 4 && _inventory[idx] != NULL)
+	{
 		_inventory[idx] = NULL;
+	}
+	else 
+		return;
 }
 
 void	Character::use(int idx, ICharacter &target)

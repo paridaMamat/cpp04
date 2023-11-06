@@ -13,10 +13,7 @@ class Character : public ICharacter
 
     std::string _name;
     AMateria    *_inventory[4];
-    // int         _countMaterias;
-    // AMateria    *_throwed;
     
-
     public :
     Character();
     Character(const std::string name);
