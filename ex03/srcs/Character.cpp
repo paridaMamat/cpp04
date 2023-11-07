@@ -22,17 +22,7 @@ Character::Character(const std::string name) : _name(name){
 
 Character::Character(const Character &obj){
 	std::cout << "[Character] Copy constructor called." << std::endl;
-	for (size_t i = 0; i < 4; i++)
-	{
-		delete _inventory[i];
-		_inventory[i] = NULL;
-		AMateria* tmp = obj.getInventory(i); 
-		if (tmp != NULL)
-		{
-			_inventory[i] = tmp->clone();
-		}
-	}
-	_name = obj.getName();
+	*this = obj;
 	std::cout << getName() << " was copied." << std::endl;
 }
 
@@ -49,10 +39,12 @@ Character::~Character(){
 
 Character& Character::operator=(const Character &obj)
 {
+	std::cout << "[Character] Copy assignment operator called" << std::endl;
 	_name = obj._name;
 	for (size_t i = 0; i < 4; i++)
 	{
-		delete _inventory[i];
+		if (_inventory[i])
+			delete _inventory[i];
 		_inventory[i] = NULL;
 		AMateria* tmp = obj.getInventory(i); 
 		if (tmp != NULL)

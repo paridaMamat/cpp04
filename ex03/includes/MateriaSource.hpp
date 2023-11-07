@@ -23,6 +23,6 @@ class MateriaSource :public IMateriaSource
 
     void         learnMateria(AMateria *obj);
     AMateria*    createMateria(std::string const &type);
-    AMateria* getInventory(int idx) const;
+    AMateria*    getInventory(int idx) const;
 };
 #endif

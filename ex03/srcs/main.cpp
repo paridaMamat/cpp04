@@ -111,6 +111,8 @@ int main()
 
 	me->use(0, *bob);
 	me->use(1, *bob);
+	std::cout << std::endl;
+
 
 	delete tmp_ice;
 	tmp_ice = NULL;
